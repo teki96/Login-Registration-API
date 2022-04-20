@@ -29,6 +29,13 @@
                                 <div class ="alert alert-info">Registration successful!</div>
                             </div>   
                         </div>
+
+                        <!-- register error -->
+                        <div class="text-center">
+                          <div th:if="${param.error}">
+                              <div class ="alert alert-danger">Username is already registered</div>
+                          </div>   
+                        </div>
           
                           <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
           
