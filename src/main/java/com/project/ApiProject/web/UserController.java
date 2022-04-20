@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.ApiProject.web.dto.*;
+import com.project.ApiProject.config.*;
+import com.project.ApiProject.model.*;
+import com.project.ApiProject.repository.*;
+import com.project.ApiProject.service.*;
+
 
 @Controller
 @RequestMapping("/registration")
