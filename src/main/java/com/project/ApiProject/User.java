@@ -18,10 +18,9 @@ import lombok.Data;
 @Data
 public class User extends AbstractPersistable<Long> {
 
-    @Column(nullable = false, unique = true, length = 20)
+    @Column(unique = true)
     private String username;
     
-    @Column(nullable = false, length = 64)
     private String password;
 
     public User(){
