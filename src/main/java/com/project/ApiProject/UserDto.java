@@ -1,4 +1,4 @@
-package com.project.ApiProject.web.dto;
+package com.project.ApiProject;
 
 public class UserDto {
     private String username;

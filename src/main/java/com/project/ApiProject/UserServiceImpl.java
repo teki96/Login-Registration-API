@@ -1,11 +1,8 @@
+package com.project.ApiProject;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
-
-import com.project.ApiProject.model.Role;
-import com.project.ApiProject.model.User;
-import com.project.ApiProject.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
