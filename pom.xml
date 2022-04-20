@@ -17,9 +17,6 @@
 		<java.version>11</java.version>
 		<testcontainers.version>1.16.2</testcontainers.version>
 	</properties>
-	<authentication-manager>
-    <authentication-provider ref="authProvider" />
-	</authentication-manager>
 	<dependencies>
 	    <dependency>
     		<groupId>org.springframework.boot</groupId>
