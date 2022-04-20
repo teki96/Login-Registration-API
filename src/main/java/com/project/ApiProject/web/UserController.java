@@ -1,4 +1,7 @@
-package com.project.ApiProject;
+package com.project.ApiProject.web;
+
+import com.project.ApiProject.service.UserService;
+import com.project.ApiProject.web.dto.UserDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.project.ApiProject.web.dto.*;
 
 @Controller
 @RequestMapping("/registration")
