@@ -12,8 +12,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
-
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -22,28 +20,27 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
-
     public UserServiceImpl(UserRepository userRepository){
         this.userRepository = userRepository;
     }
 
     @Override
 	public User registerNewUser(UserDto registrationDto) {
-		User user = new User(registrationDto.getUsername(), 
-				passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("ROLE_USER")));
-		
+        User user = new User(registrationDto.getFirstname(), registrationDto.getLastname(), 
+                                registrationDto.getEmail(), passwordEncoder.encode(registrationDto.getPassword()),
+                                passwordEncoder.encode(registrationDto.getRpassword()),
+                                Arrays.asList(new Role("ROLE_USER")));
 		return userRepository.save(user);
 	}
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if(username == null){
-            throw new UsernameNotFoundException("No such user: " + username);
+        User user = userRepository.findByEmail(username);
+        if(user == null){
+            throw new UsernameNotFoundException("No such E-mail: " + username);
         }
 
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), mapRoles(user.getRole()));
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), mapRoles(user.getRole()));
     }
 
     private Collection<? extends GrantedAuthority> mapRoles(Collection<Role> roles){
