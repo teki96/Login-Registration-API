@@ -1,5 +1,6 @@
 package com.project.ApiProject;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
@@ -13,6 +14,7 @@ public class UserDto {
     @NotBlank(message = "Enter your lastname")
     private String lastname;
 
+    @Column(unique = true)
     @NotBlank(message = "Enter your email")
     @Email(message = "Enter valid email address")
     private String email;
@@ -21,20 +23,16 @@ public class UserDto {
     @Length(min = 6, message = "Password needs to be atleast 6 characters long")
     private String password;
 
-    @NotBlank(message = "Re-enter your password")
-    private String rpassword;
-
     public UserDto(){
 
     }
 
     
-    public UserDto(String firstname, String lastname, String email, String password, String rpassword){
+    public UserDto(String firstname, String lastname, String email, String password){
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
-        this.rpassword = rpassword;
     }
 
     public String getEmail() {
@@ -69,11 +67,4 @@ public class UserDto {
         return password;
     }
 
-    public String getRpassword() {
-        return rpassword;
-    }
-
-    public void setRpassword(String rpassword) {
-        this.rpassword = rpassword;
-    }
 }

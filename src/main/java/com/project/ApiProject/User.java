@@ -3,6 +3,7 @@ package com.project.ApiProject;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -25,6 +26,7 @@ public class User extends AbstractPersistable<Long> {
     @NotBlank(message = "Enter your lastname")
     private String lastname;
 
+    @Column(unique = true)
     @NotBlank(message = "Enter your email")
     @Email(message = "Enter valid email address")
     private String email;
@@ -33,20 +35,15 @@ public class User extends AbstractPersistable<Long> {
     @Length(min = 6, message = "Password needs to be atleast 6 characters long")
     private String password;
 
-    @NotBlank(message = "Re-enter your password")
-    private String rpassword;
-  
-
     public User(){
 
     }
 
-    public User(String firstname, String lastname, String email, String password, String rpassword, Collection<Role> role){
+    public User(String firstname, String lastname, String email, String password, Collection<Role> role){
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
-        this.rpassword = rpassword;
         this.role = role;
     }
 
@@ -67,10 +64,6 @@ public class User extends AbstractPersistable<Long> {
 
     public String getPassword(){
         return password;
-    }
-
-    public String getRpassword(){
-        return rpassword;
     }
 
     public Collection<Role> getRole(){
@@ -97,10 +90,6 @@ public class User extends AbstractPersistable<Long> {
         this.password = password;
     }
 
-    public void setRpassword(String rpassword){
-        this.rpassword = rpassword;
-    }
-    
     public void setRole(Collection<Role> role){
         this.role = role;
     }
